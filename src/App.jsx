@@ -21,12 +21,14 @@ export default function App() {
     SetNewItem("")
   }
 
-  function toggleTodo(id, completed){
+  function toggleTodo(id, completed) {
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
-        if(todo.id === id){
+        if (todo.id === id) {
           return { ...todo, completed }
         }
+
+        return todo
       })
     })
   }
@@ -52,7 +54,7 @@ export default function App() {
             <li key={todo.id}>
               <label>
                 <input type="checkbox" checked={todo.completed}
-                onChange={e=> toggleTodo(todo.id, e.target.checked)} />
+                  onChange={e => toggleTodo(todo.id, e.target.checked)} />
                 {todo.title}
               </label>
               <button className="btn btn-danger">Delete</button>
